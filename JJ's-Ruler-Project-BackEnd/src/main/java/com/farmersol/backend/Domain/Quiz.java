@@ -22,7 +22,7 @@ public class Quiz {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private Farmer_User farmerUser;
 
 
     @ManyToOne
@@ -44,4 +44,11 @@ public class Quiz {
 
 
 
+    public Quiz(Farmer_User farmerUser, Questionnaire questionnaire, LocalDateTime startTime, String status) {
+        this.farmerUser = farmerUser;
+        this.questionnaire = questionnaire;
+        this.score = 0;
+        this.startTime = startTime;
+        this.status = status;
+    }
 }

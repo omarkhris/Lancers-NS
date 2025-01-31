@@ -26,5 +26,5 @@ public class Analysis {
     private String suggestion;
 
     @ManyToOne
-    private User user;
+    private Farmer_User farmerUser;
 }

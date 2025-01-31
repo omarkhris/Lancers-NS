@@ -1,7 +1,11 @@
 package com.farmersol.backend.Repository;
 
-import com.farmersol.backend.Domain.User;
+import com.farmersol.backend.Domain.Farmer_User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<Farmer_User, Long> {
+
+    Optional<Farmer_User> findByUsername(String username);
 }

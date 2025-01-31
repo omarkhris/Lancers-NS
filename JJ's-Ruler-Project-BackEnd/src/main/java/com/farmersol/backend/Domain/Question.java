@@ -25,5 +25,6 @@ public class Question {
     @OneToMany(mappedBy = "question")
     private List<Option> options;
 
-
+    @Enumerated(EnumType.STRING)
+    private QuestionType questionType;
 }

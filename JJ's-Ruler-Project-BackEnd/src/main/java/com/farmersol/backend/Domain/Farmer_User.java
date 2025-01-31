@@ -1,14 +1,10 @@
 package com.farmersol.backend.Domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 
 import java.util.List;
 @Entity
@@ -16,9 +12,8 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-public class User {
+public class Farmer_User {
 
-    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,6 +23,4 @@ public class User {
 
     @OneToMany()
     private List<Response> responses;
-
-
 }

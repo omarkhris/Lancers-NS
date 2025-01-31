@@ -15,14 +15,14 @@ public class Response {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String answer;
 
     @ManyToOne
     @JoinColumn(name = "quiz_id", nullable = false)
     private Quiz quiz; // Reference to the question being answered
+
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    @JoinColumn(name = "farmer_user_id", nullable = false)
+    private Farmer_User farmerUser;
 
     @ManyToOne
     @JoinColumn(name = "question_id", nullable = false)
@@ -31,11 +31,13 @@ public class Response {
 
     @ManyToOne
     @JoinColumn(name = "option_id", referencedColumnName = "id")
-    private Option selectedOption; //The option selected by the user (for MCQs)
+    private Option selectedOption; //The option selected by the farmerUser (for MCQs)
 
-    @Column(name = "answer_text", columnDefinition = "TEXT",   nullable = false)
-    private String answerText; // The user's answer (for open-ended questions)
+    @Column(name = "answer_text", columnDefinition = "TEXT",   nullable = true)
+    private String answerText; // The farmerUser's answer (for open-ended questions)
 
+    @Enumerated(EnumType.STRING)
+    private QuestionType questionType;
 
 
 }
