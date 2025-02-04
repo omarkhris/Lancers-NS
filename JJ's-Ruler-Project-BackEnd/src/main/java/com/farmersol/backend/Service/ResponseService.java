@@ -1,8 +1,8 @@
-package com.farmersol.backend.Service;
+package com.farmersol.backend.service;
 
 
-import com.farmersol.backend.Domain.*;
-import com.farmersol.backend.Repository.*;
+import com.farmersol.backend.entity.*;
+import com.farmersol.backend.repository.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -68,7 +68,6 @@ public class ResponseService {
     }
 
 
-
     public List<Response> getResponsesByUser(Long userId){
         return responseRepository.findByFarmerUserId(userId);
     }
@@ -76,4 +75,23 @@ public class ResponseService {
     public List<Response> getResponsesByUserAndQuiz(Long userId, Long quizId){
         return responseRepository.findByFarmerUserIdAndQuizId(userId, quizId);
     }
+
+    public Response updateResponse(Long id, Response updatedResponse) {
+        return responseRepository.findById(id)
+                .map(existingResponse -> {
+                    existingResponse.setSelectedOption(updatedResponse.getSelectedOption());
+                    existingResponse.setAnswerText(updatedResponse.getAnswerText());
+                    return existingResponse;
+                }).orElseThrow(() -> new RuntimeException("Response not found"));
+    }
+
+    public void deleteResponse(Long id){
+        responseRepository.deleteById(id);
+    }
+
+    public List<Response> getAllResponses(){
+        return responseRepository.findAll();
+    }
+
+
 }

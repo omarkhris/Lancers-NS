@@ -1,4 +1,4 @@
-package com.farmersol.backend.Domain;
+package com.farmersol.backend.entity;
 
 public enum QuestionType {
     MCQ,

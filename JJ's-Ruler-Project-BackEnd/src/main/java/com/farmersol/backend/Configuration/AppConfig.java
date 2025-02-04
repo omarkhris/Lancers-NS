@@ -1,4 +1,4 @@
-package com.farmersol.backend.Configuration;
+package com.farmersol.backend.configuration;
 
 
 import org.springframework.context.annotation.Bean;

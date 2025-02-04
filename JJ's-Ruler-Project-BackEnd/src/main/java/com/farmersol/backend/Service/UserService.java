@@ -1,8 +1,8 @@
-package com.farmersol.backend.Service;
+package com.farmersol.backend.service;
 
 
-import com.farmersol.backend.Domain.Farmer_User;
-import com.farmersol.backend.Repository.UserRepository;
+import com.farmersol.backend.entity.Farmer_User;
+import com.farmersol.backend.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

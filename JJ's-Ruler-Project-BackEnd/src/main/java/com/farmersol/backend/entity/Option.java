@@ -1,4 +1,4 @@
-package com.farmersol.backend.Domain;
+package com.farmersol.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

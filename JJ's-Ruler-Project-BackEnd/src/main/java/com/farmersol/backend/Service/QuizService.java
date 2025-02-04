@@ -1,9 +1,9 @@
-package com.farmersol.backend.Service;
+package com.farmersol.backend.service;
 
-import com.farmersol.backend.Domain.Farmer_User;
-import com.farmersol.backend.Domain.Questionnaire;
-import com.farmersol.backend.Domain.Quiz;
-import com.farmersol.backend.Repository.QuizRepository;
+import com.farmersol.backend.entity.Farmer_User;
+import com.farmersol.backend.entity.Questionnaire;
+import com.farmersol.backend.entity.Quiz;
+import com.farmersol.backend.repository.QuizRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

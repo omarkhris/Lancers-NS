@@ -1,7 +1,7 @@
-package com.farmersol.backend.Repository;
+package com.farmersol.backend.repository;
 
-import com.farmersol.backend.Domain.Farmer_User;
-import com.farmersol.backend.Domain.Response;
+import com.farmersol.backend.entity.Farmer_User;
+import com.farmersol.backend.entity.Response;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

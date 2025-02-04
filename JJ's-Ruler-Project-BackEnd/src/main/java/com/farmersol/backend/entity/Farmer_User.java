@@ -1,4 +1,4 @@
-package com.farmersol.backend.Domain;
+package com.farmersol.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,24 +7,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
-
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class Question {
+public class Farmer_User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String questionText;
+    private String username;
+    private String email;
+    private String password;
 
-    @ManyToOne
-    private Questionnaire questionnaire;
-
-    @OneToMany(mappedBy = "question")
-    private List<Option> options;
-
-    @Enumerated(EnumType.STRING)
-    private QuestionType questionType;
+    @OneToMany()
+    private List<Response> responses;
 }

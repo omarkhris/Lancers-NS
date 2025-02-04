@@ -1,6 +1,6 @@
-package com.farmersol.backend.Repository;
+package com.farmersol.backend.repository;
 
-import com.farmersol.backend.Domain.Option;
+import com.farmersol.backend.entity.Option;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
