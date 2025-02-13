@@ -1,0 +1,134 @@
+[
+    {
+      "question": "Have you read the consent information and agree to participate in the study?",
+      "type": "single-choice",
+      "options": ["Yes", "No"]
+    },
+    {
+      "question": "Do you currently work in the production agriculture industry? Production agriculture is defined as 'Agricultural production is a series of activities that result in a product that will ultimately be sold at retail' (Minnesota Department of Revenue).",
+      "type": "single-choice",
+      "options": ["Yes", "No"]
+    },
+    {
+      "question": "How many years have you worked in the production agriculture industry?",
+      "type": "single-choice",
+      "options": [
+        "Less than a year",
+        "1-5 years",
+        "6-10 years",
+        "11-15 years",
+        "16-20 years",
+        "21-25 years",
+        "25-30 years",
+        "31-35 years",
+        "36-40 years",
+        "More than 40 years"
+      ]
+    },
+    {
+      "question": "In your opinion, as someone who works in production agriculture, how often do you experience 'job stress'?\n\nJob stress can be defined as the harmful physical and emotional responses that occur when the requirements of the job do not match the capabilities, resources, or needs of the worker. (US CDC)",
+      "type": "single-choice",
+      "options": [
+        "Never (almost 0% of the days)",
+        "Rare (less than 10% of the days)",
+        "Occasional (about 30% of the days)",
+        "Sometimes (about 50% of the days)",
+        "Frequent (about 70% of the days)",
+        "Usually (about 90% of the days)",
+        "Every day (about 100% of the days)"
+      ]
+    },
+    {
+      "question": "On average, what is your level of 'job stress' as someone who works in production agriculture?\n\nJob stress can be defined as the harmful physical and emotional responses that occur when the requirements of the job do not match the capabilities, resources, or needs of the worker. (US CDC)",
+      "type": "scale",
+      "options": [
+        "No Job Stress",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "High Levels of Job Stress"
+      ]
+    },
+    {
+      "question": "I feel pressure to continue or take over the family farming operation.",
+      "type": "likert-scale",
+      "options": ["1 Strongly Disagree", "2 Disagree", "3 Neutral", "4 Agree", "5 Strongly Agree"]
+    },
+    {
+      "question": "I feel pressure to keep up with advancements in farming technology or methods.",
+      "type": "likert-scale",
+      "options": ["1 Strongly Disagree", "2 Disagree", "3 Neutral", "4 Agree", "5 Strongly Agree"]
+    },
+    {
+      "question": "My job responsibilities limit my ability to attend social or community events.",
+      "type": "likert-scale",
+      "options": ["1 Strongly Disagree", "2 Disagree", "3 Neutral", "4 Agree", "5 Strongly Agree"]
+    },
+    {
+      "question": "I worry about the stability of my farming operation or job.",
+      "type": "likert-scale",
+      "options": ["1 Strongly Disagree", "2 Disagree", "3 Neutral", "4 Agree", "5 Strongly Agree"]
+    },
+    {
+      "question": "The yearly loss of animals or crops significantly impacts my emotional well-being.",
+      "type": "likert-scale",
+      "options": ["1 Strongly Disagree", "2 Disagree", "3 Neutral", "4 Agree", "5 Strongly Agree"]
+    },
+    {
+      "question": "Market fluctuations contribute significantly to my stress levels.",
+      "type": "likert-scale",
+      "options": ["1 Strongly Disagree", "2 Disagree", "3 Neutral", "4 Agree", "5 Strongly Agree"]
+    },
+    {
+      "question": "Rising input costs (e.g., feed, equipment, labor) increase my stress levels.",
+      "type": "likert-scale",
+      "options": ["1 Strongly Disagree", "2 Disagree", "3 Neutral", "4 Agree", "5 Strongly Agree"]
+    },
+    {
+      "question": "Extreme weather conditions (e.g., droughts, floods) significantly impact my stress levels.",
+      "type": "likert-scale",
+      "options": ["1 Strongly Disagree", "2 Disagree", "3 Neutral", "4 Agree", "5 Strongly Agree"]
+    },
+    {
+      "question": "The physical demands of my job negatively affect my overall health.",
+      "type": "likert-scale",
+      "options": ["1 Strongly Disagree", "2 Disagree", "3 Neutral", "4 Agree", "5 Strongly Agree"]
+    },
+    {
+      "question": "I find it stressful to hire, train, or retain skilled labor for my farming operation.",
+      "type": "likert-scale",
+      "options": ["1 Strongly Disagree", "2 Disagree", "3 Neutral", "4 Agree", "5 Strongly Agree"]
+    },
+    {
+      "question": "Agricultural policies or government regulations create additional stress for me.",
+      "type": "likert-scale",
+      "options": ["1 Strongly Disagree", "2 Disagree", "3 Neutral", "4 Agree", "5 Strongly Agree"]
+    },
+    {
+      "question": "My farming responsibilities prevent me from balancing work and personal time effectively.",
+      "type": "likert-scale",
+      "options": ["1 Strongly Disagree", "2 Disagree", "3 Neutral", "4 Agree", "5 Strongly Agree"]
+    },
+    {
+      "question": "I feel confident in my ability to manage unexpected challenges in farming.",
+      "type": "likert-scale",
+      "options": ["1 Strongly Disagree", "2 Disagree", "3 Neutral", "4 Agree", "5 Strongly Agree"]
+    },
+    {
+      "question": "As someone who works in production agriculture, what other conditions contribute to your job stress?",
+      "type": "text-answer"
+    },
+    {
+      "question": "If you have a high-ranked stressor, why have you ranked the stressor(s) highly?",
+      "type": "text-answer"
+    },
+    {
+      "question": "Any additional comments related to stress as someone who works in production agriculture?",
+      "type": "text-answer"
+    }
+  ]
+  

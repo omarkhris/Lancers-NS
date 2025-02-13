@@ -1,0 +1,354 @@
+// Colors
+$off-white: #f9f9f9;
+$blue: #007bff;
+$green: #28a745;
+$red: #dc3545;
+$yellow: #ffc107;
+$dark-blue: darken($blue, 20%);
+$dark-green: darken($green, 15%);
+$dark-red: darken($red, 20%);
+$light-gray: #e0e0e0;
+
+// Spacing & Sizing
+$xs: 5px;
+$sm: 10px;
+$md: 20px;
+$lg: 30px;
+$xl: 40px;
+$xxl: 50px;
+
+$button-radius: 8px;
+$shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+
+$quicksand: 'Quicksand', sans-serif;
+
+// General Layout
+.questions {
+    background-color: $off-white;
+    border-left: 5px solid $blue;
+    width: 90%;
+    max-width: 800px;
+    margin: $lg auto 0 auto;
+    padding: $md;
+    box-shadow: $shadow;
+    border-radius: 10px;
+}
+
+h2 {
+    text-align: center;
+    font-weight: bold;
+    color: $blue;
+}
+
+.lifeline-container {
+    display: flex;
+    justify-content: space-between;
+    padding: $sm;
+}
+
+h5 {
+    font-size: 1.3rem;
+    margin-bottom: $lg;
+    line-height: 1.5;
+    text-align: center;
+    color: $dark-blue;
+}
+
+// Two-Option Buttons (Yes/No)
+.options-container {
+    display: flex;
+    justify-content: center;
+    gap: $md;
+    margin-bottom: $md;
+
+    .option {
+        background-color: $blue;
+        border-radius: $button-radius;
+        color: white;
+        cursor: pointer;
+        padding: $sm $md;
+        transition: 0.3s linear all;
+        text-align: center;
+        width: 45%;
+        font-weight: bold;
+        border: 2px solid transparent;
+        font-size: 1rem;
+
+        &:hover {
+            background-color: $dark-blue;
+        }
+
+        &.selected-option {
+            background-color: $yellow;
+            color: black;
+            border: 2px solid $blue;
+        }
+    }
+}
+
+/// Likert Scale (5-Option Slider)
+.slider-container {
+    text-align: center;
+    margin: $md auto;
+    position: relative;
+
+    input[type="range"] {
+        width: 100%;
+        margin-top: $sm;
+        -webkit-appearance: none;
+        background: linear-gradient(to right, $blue 0%, $green 100%);
+        height: 8px;
+        border-radius: 4px;
+        outline: none;
+        transition: 0.3s;
+
+        &:hover {
+            opacity: 0.8;
+        }
+
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background-color: $blue;
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+    }
+
+    .slider-labels {
+        display: flex;
+        justify-content: space-between;
+        margin-top: $sm;
+
+        span {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: $dark-blue;
+        }
+    }
+
+    // Tooltip that displays the selected value
+    .slider-tooltip {
+        position: absolute;
+        top: -25px; /* Default: above the slider */
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: $yellow;
+        color: black;
+        font-size: 0.9rem;
+        padding: 4px 8px;
+        border-radius: 5px;
+        visibility: hidden; // Hidden by default
+        transition: visibility 0.3s ease-in-out, top 0.3s ease-in-out;
+    }
+
+    // Show tooltip when slider is active
+    input[type="range"]:active + .slider-tooltip,
+    input[type="range"]:focus + .slider-tooltip {
+        visibility: visible;
+    }
+
+    // When screen is 520px or smaller, position the tooltip below the slider
+    @media screen and (max-width: 520px) {
+        .slider-tooltip {
+            top: 20px; /* Position tooltip below the slider */
+            visibility: visible; /* Always visible for small screens */
+        }
+    }
+
+    // When screen is 480px or smaller, change the slider labels to numbers 1-5 and add note
+    @media screen and (max-width: 480px) {
+        .slider-labels {
+            display: block;
+            margin-top: $xs;
+
+            span {
+                font-size: 1rem;
+                margin: 0 $sm;
+            }
+        }
+
+        .slider-tooltip {
+            display: none; // Hide tooltip since we are using numbers instead
+        }
+
+        .slider-note {
+            margin-top: $sm;
+            font-size: 0.8rem;
+            color: $dark-blue;
+            font-weight: normal;
+        }
+    }
+}
+
+// Dropdown for More than 5 Options
+select {
+    width: 100%;
+    padding: $sm;
+    font-size: 1rem;
+    border-radius: $button-radius;
+    border: 2px solid $light-gray;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+        border-color: $blue;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: $dark-blue;
+        box-shadow: 0 0 5px rgba($blue, 0.5);
+    }
+}
+
+// Text Input for Open-Ended Questions
+.text-input-container {
+    margin: $md auto;
+    text-align: center;
+
+    textarea {
+        width: 100%;
+        padding: $sm;
+        font-size: 1rem;
+        border-radius: $button-radius;
+        border: 2px solid $light-gray;
+        resize: none;
+        transition: 0.3s;
+
+        &:focus {
+            outline: none;
+            border-color: $blue;
+            box-shadow: 0 0 5px rgba($blue, 0.5);
+        }
+    }
+}
+
+// Navigation Buttons
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin: $md auto;
+    width: 100%;
+
+    button {
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-family: $quicksand;
+        padding: $xs $sm;
+        font-size: 1rem;
+        border-radius: $button-radius;
+        box-shadow: $shadow;
+        transition: 0.2s linear all;
+
+        &:first-child {
+            background-color: $dark-blue;
+
+            &:hover {
+                background-color: darken($blue, 25%);
+            }
+        }
+
+        &:nth-child(2) {
+            background-color: $dark-green;
+
+            &:hover {
+                background-color: darken($green, 25%);
+            }
+        }
+
+        &:last-child {
+            background-color: $dark-red;
+
+            &:hover {
+                background-color: darken($red, 25%);
+            }
+        }
+    }
+}
+
+// 📱 RESPONSIVENESS FOR DIFFERENT SCREEN SIZES
+
+// Small Screens (Phones & Small Tablets)
+@media screen and (max-width: 768px) {
+    .questions {
+        width: 95%;
+        padding: $sm;
+    }
+
+    // Stack Yes/No options and navigation buttons vertically
+    .options-container, .button-container {
+        flex-direction: column;
+        align-items: center;
+        gap: $sm;
+
+        .option, button {
+            width: 100%;
+            font-size: 1rem;
+            padding: $sm $md;
+        }
+    }
+}
+
+// Extra Small Screens (Very Small Phones)
+@media screen and (max-width: 480px) {
+    h5 {
+        font-size: 1.1rem;
+    }
+
+    // Adjust Yes/No and navigation buttons for small screens
+    .options-container, .button-container {
+        .option, button {
+            width: 100%;
+            padding: $sm;
+        }
+    }
+
+    // Adjust slider labels for better fit
+    .slider-container .slider-labels {
+        flex-direction: column;
+        gap: $xs;
+
+        span {
+            font-size: 0.8rem;
+        }
+    }
+
+    // Ensure dropdown fits well
+    select {
+        font-size: 0.9rem;
+    }
+
+    // Adjust text input box for better mobile typing
+    .text-input-container textarea {
+        font-size: 0.9rem;
+    }
+}
+
+// Large Screens (Desktops & Large Tablets)
+@media screen and (min-width: 1024px) {
+    // Enlarge navigation and Yes/No buttons to match
+    .options-container, .button-container {
+        .option, button {
+            font-size: 1.2rem;
+            padding: $sm $lg;
+            width: 40%;
+        }
+    }
+}
+
+// Medium Screens (Tablets)
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .options-container, .button-container {
+        .option, button {
+            font-size: 1.1rem;
+            padding: $sm $md;
+            width: 45%;
+        }
+    }
+}

@@ -1,0 +1,33 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+body{
+    font-family: $quicksand;
+}
+
+
+.fa-lightbulb {
+    font-size: 24px !important;  // Ensures visibility
+    display: inline-block !important;  // Prevents 0x0 issue
+    width: auto;
+    height: auto;
+    color: yellow;  // Change to any color you prefer
+}
+
+// Applies to all FontAwesome icons
+.fas, .far, .fal, .fab, .fad {
+    font-size: 24px;
+    display: inline-block;
+    width: auto;
+    height: auto;
+}
+
+.disable {
+    background-color: #ccc !important;
+    box-shadow: none !important;
+    pointer-events: none;
+    opacity: 0.9 !important;
+}
