@@ -1,35 +1,34 @@
-// Colors
-$off-white: #f9f9f9;
-$blue: #007bff;
-$green: #28a745;
-$red: #dc3545;
-$yellow: #ffc107;
-$dark-blue: darken($blue, 20%);
-$dark-green: darken($green, 15%);
-$dark-red: darken($red, 20%);
+// ===== COLORS =====
+$white: #ffffff;
+$dark-cyan: #008B8B; // Teal for Next button
+$dark-blue: #003366; // Dark Blue for Previous button
+$red: #FF0000; // Red for Quit button hover
+$green: #4CAF50; // Green for Submit button
 $light-gray: #e0e0e0;
+$blended-color: #00796B; // Blended color of blue and green
 
-// Spacing & Sizing
-$xs: 5px;
-$sm: 10px;
-$md: 20px;
-$lg: 30px;
-$xl: 40px;
-$xxl: 50px;
+// ===== SPACING & SIZING =====
+$spacing-xs: 5px;
+$spacing-sm: 10px;
+$spacing-md: 20px;
+$spacing-lg: 30px;
+$spacing-xl: 40px;
+$spacing-xxl: 50px;
 
 $button-radius: 8px;
 $shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 
+// ===== TYPOGRAPHY =====
 $quicksand: 'Quicksand', sans-serif;
 
-// General Layout
+// ===== GENERAL LAYOUT =====
 .questions {
-    background-color: $off-white;
-    border-left: 5px solid $blue;
+    background-color: $white;
+    border-left: 5px solid $dark-blue;
     width: 90%;
     max-width: 800px;
-    margin: $lg auto 0 auto;
-    padding: $md;
+    margin: $spacing-lg auto 0 auto;
+    padding: $spacing-md;
     box-shadow: $shadow;
     border-radius: 10px;
 }
@@ -37,36 +36,36 @@ $quicksand: 'Quicksand', sans-serif;
 h2 {
     text-align: center;
     font-weight: bold;
-    color: $blue;
+    color: $dark-blue;
 }
 
 .lifeline-container {
     display: flex;
     justify-content: space-between;
-    padding: $sm;
+    padding: $spacing-sm;
 }
 
 h5 {
     font-size: 1.3rem;
-    margin-bottom: $lg;
+    margin-bottom: $spacing-lg;
     line-height: 1.5;
     text-align: center;
     color: $dark-blue;
 }
 
-// Two-Option Buttons (Yes/No)
+// ===== TWO-OPTION BUTTONS (YES/NO) =====
 .options-container {
     display: flex;
     justify-content: center;
-    gap: $md;
-    margin-bottom: $md;
+    gap: $spacing-md;
+    margin-bottom: $spacing-md;
 
     .option {
-        background-color: $blue;
+        background-color: $dark-blue;
         border-radius: $button-radius;
-        color: white;
+        color: $white;
         cursor: pointer;
-        padding: $sm $md;
+        padding: $spacing-sm $spacing-md;
         transition: 0.3s linear all;
         text-align: center;
         width: 45%;
@@ -75,28 +74,28 @@ h5 {
         font-size: 1rem;
 
         &:hover {
-            background-color: $dark-blue;
+            background-color: darken($dark-blue, 10%);
         }
 
         &.selected-option {
-            background-color: $yellow;
-            color: black;
-            border: 2px solid $blue;
+            background-color: $dark-cyan;
+            color: $white;
+            border: 2px solid $dark-blue;
         }
     }
 }
 
-/// Likert Scale (5-Option Slider)
+// ===== LIKERT SCALE (5-OPTION SLIDER) =====
 .slider-container {
     text-align: center;
-    margin: $md auto;
+    margin: $spacing-md auto;
     position: relative;
 
     input[type="range"] {
         width: 100%;
-        margin-top: $sm;
+        margin-top: $spacing-sm;
         -webkit-appearance: none;
-        background: linear-gradient(to right, $blue 0%, $green 100%);
+        background: linear-gradient(to right, $dark-blue 0%, $dark-cyan 100%); // Dark blue to dark cyan gradient
         height: 8px;
         border-radius: 4px;
         outline: none;
@@ -110,7 +109,7 @@ h5 {
             -webkit-appearance: none;
             width: 20px;
             height: 20px;
-            background-color: $blue;
+            background-color: $dark-blue;
             border-radius: 50%;
             cursor: pointer;
             position: relative;
@@ -121,7 +120,7 @@ h5 {
     .slider-labels {
         display: flex;
         justify-content: space-between;
-        margin-top: $sm;
+        margin-top: $spacing-sm;
 
         span {
             font-size: 0.9rem;
@@ -130,53 +129,49 @@ h5 {
         }
     }
 
-    // Tooltip that displays the selected value
     .slider-tooltip {
         position: absolute;
-        top: -25px; /* Default: above the slider */
+        top: -25px;
         left: 50%;
         transform: translateX(-50%);
-        background-color: $yellow;
-        color: black;
+        background-color: $dark-cyan;
+        color: $white;
         font-size: 0.9rem;
         padding: 4px 8px;
         border-radius: 5px;
-        visibility: hidden; // Hidden by default
+        visibility: hidden;
         transition: visibility 0.3s ease-in-out, top 0.3s ease-in-out;
     }
 
-    // Show tooltip when slider is active
     input[type="range"]:active + .slider-tooltip,
     input[type="range"]:focus + .slider-tooltip {
         visibility: visible;
     }
 
-    // When screen is 520px or smaller, position the tooltip below the slider
     @media screen and (max-width: 520px) {
         .slider-tooltip {
-            top: 20px; /* Position tooltip below the slider */
-            visibility: visible; /* Always visible for small screens */
+            top: 20px;
+            visibility: visible;
         }
     }
 
-    // When screen is 480px or smaller, change the slider labels to numbers 1-5 and add note
     @media screen and (max-width: 480px) {
         .slider-labels {
             display: block;
-            margin-top: $xs;
+            margin-top: $spacing-xs;
 
             span {
                 font-size: 1rem;
-                margin: 0 $sm;
+                margin: 0 $spacing-sm;
             }
         }
 
         .slider-tooltip {
-            display: none; // Hide tooltip since we are using numbers instead
+            display: none;
         }
 
         .slider-note {
-            margin-top: $sm;
+            margin-top: $spacing-sm;
             font-size: 0.8rem;
             color: $dark-blue;
             font-weight: normal;
@@ -184,36 +179,36 @@ h5 {
     }
 }
 
-// Dropdown for More than 5 Options
+// ===== DROPDOWN FOR MORE THAN 5 OPTIONS =====
 select {
     width: 100%;
-    padding: $sm;
+    padding: $spacing-sm;
     font-size: 1rem;
     border-radius: $button-radius;
     border: 2px solid $light-gray;
-    background-color: white;
+    background-color: $white;
     cursor: pointer;
     transition: 0.2s;
 
     &:hover {
-        border-color: $blue;
+        border-color: $dark-blue;
     }
 
     &:focus {
         outline: none;
         border-color: $dark-blue;
-        box-shadow: 0 0 5px rgba($blue, 0.5);
+        box-shadow: 0 0 5px rgba($dark-blue, 0.5);
     }
 }
 
-// Text Input for Open-Ended Questions
+// ===== TEXT INPUT FOR OPEN-ENDED QUESTIONS =====
 .text-input-container {
-    margin: $md auto;
+    margin: $spacing-md auto;
     text-align: center;
 
     textarea {
         width: 100%;
-        padding: $sm;
+        padding: $spacing-sm;
         font-size: 1rem;
         border-radius: $button-radius;
         border: 2px solid $light-gray;
@@ -222,133 +217,152 @@ select {
 
         &:focus {
             outline: none;
-            border-color: $blue;
-            box-shadow: 0 0 5px rgba($blue, 0.5);
+            border-color: $dark-blue;
+            box-shadow: 0 0 5px rgba($dark-blue, 0.5);
         }
     }
 }
 
-// Navigation Buttons
+// ===== BUTTON CONTAINER =====
 .button-container {
     display: flex;
     justify-content: space-between;
-    margin: $md auto;
+    margin: $spacing-md auto;
     width: 100%;
+    gap: $spacing-sm;
 
     button {
         border: none;
-        color: white;
+        color: $white;
         cursor: pointer;
         font-family: $quicksand;
-        padding: $xs $sm;
+        padding: $spacing-xs $spacing-sm;
         font-size: 1rem;
         border-radius: $button-radius;
         box-shadow: $shadow;
         transition: 0.2s linear all;
+        flex: 1;
 
-        &:first-child {
-            background-color: $dark-blue;
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
 
-            &:hover {
-                background-color: darken($blue, 25%);
+        // Previous Button
+        &.previous-button {
+            background-color: $dark-blue; // Dark blue for Previous
+
+            &:hover:not(:disabled) {
+                background-color: darken($dark-blue, 10%);
             }
         }
 
-        &:nth-child(2) {
-            background-color: $dark-green;
+        // Next Button
+        &.next-button {
+            background-color: $dark-cyan; // Teal for Next
 
-            &:hover {
-                background-color: darken($green, 25%);
+            &:hover:not(:disabled) {
+                background-color: darken($dark-cyan, 10%);
             }
         }
 
-        &:last-child {
-            background-color: $dark-red;
+        // Quit Button
+        &.quit-button {
+            background-color: $white; // White by default
+            color: $dark-blue; // Dark blue text
+            border: 2px solid $dark-blue; // Dark blue border
 
             &:hover {
-                background-color: darken($red, 25%);
+                background-color: $red; // Red on hover
+                color: $white; // White text on hover
+                border-color: $red; // Red border on hover
+            }
+        }
+
+        // Submit Button
+        &.submit-button {
+            background-color: $blended-color; // Blended color for Submit
+
+            &:hover {
+                background-color: darken($blended-color, 10%);
             }
         }
     }
 }
 
-// 📱 RESPONSIVENESS FOR DIFFERENT SCREEN SIZES
-
-// Small Screens (Phones & Small Tablets)
+// ===== RESPONSIVENESS =====
 @media screen and (max-width: 768px) {
     .questions {
         width: 95%;
-        padding: $sm;
+        padding: $spacing-sm;
     }
 
-    // Stack Yes/No options and navigation buttons vertically
     .options-container, .button-container {
         flex-direction: column;
         align-items: center;
-        gap: $sm;
+        gap: $spacing-sm;
 
         .option, button {
             width: 100%;
             font-size: 1rem;
-            padding: $sm $md;
+            padding: $spacing-sm $spacing-md;
         }
     }
 }
 
-// Extra Small Screens (Very Small Phones)
 @media screen and (max-width: 480px) {
     h5 {
         font-size: 1.1rem;
     }
 
-    // Adjust Yes/No and navigation buttons for small screens
     .options-container, .button-container {
         .option, button {
             width: 100%;
-            padding: $sm;
+            padding: $spacing-sm;
         }
     }
 
-    // Adjust slider labels for better fit
     .slider-container .slider-labels {
         flex-direction: column;
-        gap: $xs;
+        gap: $spacing-xs;
 
         span {
             font-size: 0.8rem;
         }
     }
 
-    // Ensure dropdown fits well
     select {
         font-size: 0.9rem;
     }
 
-    // Adjust text input box for better mobile typing
     .text-input-container textarea {
         font-size: 0.9rem;
     }
 }
 
-// Large Screens (Desktops & Large Tablets)
 @media screen and (min-width: 1024px) {
-    // Enlarge navigation and Yes/No buttons to match
     .options-container, .button-container {
         .option, button {
             font-size: 1.2rem;
-            padding: $sm $lg;
+            padding: $spacing-sm $spacing-lg;
             width: 40%;
         }
     }
 }
 
-// Medium Screens (Tablets)
 @media screen and (min-width: 768px) and (max-width: 1023px) {
     .options-container, .button-container {
         .option, button {
             font-size: 1.1rem;
-            padding: $sm $md;
+            padding: $spacing-sm $spacing-md;
             width: 45%;
         }
     }
+}
+
+// ===== SELECTED OPTION STYLE =====
+.selected-option {
+    background-color: $blended-color !important; // Blended color for selected option
+    color: $white !important; // White text for contrast
+    border-color: $blended-color !important; // Blended color border
 }

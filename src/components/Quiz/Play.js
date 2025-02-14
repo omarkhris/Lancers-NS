@@ -156,16 +156,34 @@ const Play = () => {
                         {renderOptions()}
 
                         <div className="button-container">
-                             <button onClick={handlePreviousQuestion} disabled={currentQuestionIndex === 0}>
-                                  Previous
-                             </button>
-                             <button onClick={handleNextQuestion} disabled={currentQuestionIndex >= questions.length - 1}>
-                                 Next
+                            <button 
+                                className="previous-button"
+                                onClick={handlePreviousQuestion} 
+                                disabled={currentQuestionIndex === 0}
+                            >
+                                Previous
                             </button>
-                             <button onClick={handleQuitButtonClick}>Quit</button>
-                             {currentQuestionIndex === questions.length - 1 && (
-                                 <button onClick={endGame}>Submit</button>
-                             )}
+                            <button 
+                                className="next-button"
+                                onClick={handleNextQuestion} 
+                                disabled={currentQuestionIndex >= questions.length - 1}
+                            >
+                                Next
+                            </button>
+                            <button 
+                                className="quit-button"
+                                onClick={handleQuitButtonClick}
+                            >
+                                Quit
+                            </button>
+                            {currentQuestionIndex === questions.length - 1 && (
+                                <button 
+                                    className="submit-button"
+                                    onClick={endGame}
+                                >
+                                    Submit
+                                </button>
+                            )}
                         </div>
                     </>
                 )}
@@ -175,4 +193,3 @@ const Play = () => {
 };
 
 export default Play;
-
