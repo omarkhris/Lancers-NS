@@ -1,77 +1,86 @@
 /* QuizSummary.scss */
 
-/* General Styling */
+/* ===== COLORS ===== */
+$white: #ffffff;
+$dark-cyan: #008B8B; // Teal for highlights
+$dark-blue: #003366; // Dark blue for primary elements
+$red: #FF0000; // Red for error/alert messages
+$blended-color: #00796B; // Blended color for accents
+$light-gray: #e0e0e0; // Light gray for subtle elements
+
+/* ===== GENERAL STYLING ===== */
 .quiz-summary-container {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #f4f7ec; // Soft greenish background
+    background: $white; // White background to match Questions page
     padding: 20px;
 }
 
-/* Card Styling */
+/* ===== CARD STYLING ===== */
 .quiz-summary-card {
-    background: #ffffff;
+    background: $white; // White background for the card
     padding: 24px;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); // Subtle shadow
     text-align: center;
     width: 100%;
     max-width: 400px;
+    border-left: 5px solid $dark-blue; // Dark blue left border to match Questions page
 }
 
-/* Title Styling */
+/* ===== TITLE STYLING ===== */
 .quiz-summary-title {
     font-size: 24px;
     font-weight: bold;
-    color: #2c6e49; // Deep green color
+    color: $dark-blue; // Dark blue for the title
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
 }
 
-/* No Stats Message */
+/* ===== NO STATS MESSAGE ===== */
 .no-stats-message {
-    color: #d9534f;
+    color: $red; // Red for error/alert messages
     font-size: 18px;
     margin-top: 10px;
 }
 
-/* Stats Container */
+/* ===== STATS CONTAINER ===== */
 .stats-container {
     margin-top: 15px;
 }
 
-/* Individual Stat */
+/* ===== INDIVIDUAL STAT ===== */
 .stat {
     font-size: 18px;
-    color: #333;
+    color: $dark-blue; // Dark blue for text
     display: flex;
     align-items: center;
     gap: 8px;
     margin: 5px 0;
 }
 
-/* Icons */
+/* ===== ICONS ===== */
 .icon {
     font-size: 20px;
-    color: #2c6e49;
+    color: $dark-cyan; // Teal for icons
 }
 
-/* Score */
+/* ===== SCORE ===== */
 .score {
     font-size: 22px;
     font-weight: bold;
-    color: #2c6e49;
+    color: $dark-cyan; // Teal for score
     margin-top: 10px;
 }
 
-/* Back Button */
+/* ===== BACK BUTTON ===== */
 .back-button {
-    background: #2c6e49;
-    color: white;
+    background: $dark-blue; // Dark blue for button
+    color: $white;
     border: none;
     padding: 12px 16px;
     font-size: 16px;
@@ -87,5 +96,5 @@
 }
 
 .back-button:hover {
-    background: #1e5233;
+    background: darken($dark-blue, 10%); // Darker blue on hover
 }
