@@ -89,3 +89,11 @@
 .back-button:hover {
     background: #1e5233;
 }
+
+
+.highlighted-word {
+    background-color: yellow; /* Highlight with yellow */
+    padding: 0 4px;
+    border-radius: 4px;
+    font-weight: bold;
+}

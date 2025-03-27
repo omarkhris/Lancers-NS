@@ -1,43 +1,101 @@
-import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import { FaSeedling, FaClipboardList, FaCheckCircle, FaArrowLeft } from 'react-icons/fa';
-import '../Quiz/QuizSummary.scss';
-const QuizSummary = () => {
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { FaSeedling, FaClipboardList, FaCheckCircle, FaArrowLeft } from "react-icons/fa";
+import "../Quiz/QuizSummary.scss";
+
+const QuizSummary = (props) => {
     const location = useLocation();
     const navigate = useNavigate();
-    
-    // Ensure playerStats always has valid data
-    const playerStats = location.state || { totalQuestions: 0, answeredQuestions: 0, answers: 0 };
+
+    // Get data from props (if passed) or location.state (fallback)
+    const quizData = props.quizData || location.state || {};
+    const {
+        totalQuestions = 0,
+        answeredQuestions = 0,
+        answers = [],
+        geminiAnalysis = "No analysis available."
+    } = quizData;
+
+    // Function to process Gemini text, highlighting numbers.
+    const processGeminiText = (text) => {
+        const regex = /(\d+\..*?)(?=\*\*|$)/gs; // Regex to match numbers followed by text until next ** or end of string.
+        let parts = [];
+        let lastIndex = 0;
+        let match;
+
+        while ((match = regex.exec(text)) !== null) {
+            if (match.index > lastIndex) {
+                parts.push(text.slice(lastIndex, match.index));
+            }
+            parts.push(<span key={match.index} className="highlighted-word">{match[1]}</span>);
+            lastIndex = regex.lastIndex;
+        }
+
+        if (lastIndex < text.length) {
+            parts.push(text.slice(lastIndex));
+        }
+
+        return parts;
+    };
+
+    // Calculate score percentage
+    const scorePercentage = totalQuestions ? ((answeredQuestions / totalQuestions) * 100).toFixed(2) : 0;
+
+    // Parse answers for more user-friendly display
+    const formattedAnswers = answers.map((answer, index) => (
+        <p key={index}>
+            <strong>Q{index + 1}:</strong> {answer.optionText}
+        </p>
+    ));
 
     return (
         <div className="quiz-summary-container">
-            <Helmet><title>Quiz Summary</title></Helmet>
+            <Helmet>
+                <title>Quiz Summary</title>
+            </Helmet>
 
             <div className="quiz-summary-card">
                 <h1 className="quiz-summary-title">
                     <FaSeedling className="icon" /> Quiz Summary
                 </h1>
 
-                {playerStats.answeredQuestions === 0 ? (
+                {answeredQuestions === 0 ? (
                     <h2 className="no-stats-message">No stats available. Please take a quiz.</h2>
                 ) : (
                     <div className="stats-container">
                         <p className="stat">
                             <FaClipboardList className="icon" />
-                            <strong>Total Questions:</strong> {playerStats.totalQuestions}
+                            <strong>Total Questions:</strong> {totalQuestions}
                         </p>
                         <p className="stat">
                             <FaCheckCircle className="icon" />
-                            <strong>Answered:</strong> {playerStats.answeredQuestions}
+                            <strong>Answered:</strong> {answeredQuestions}
                         </p>
                         <p className="score">
-                            Score: {((playerStats.answeredQuestions / playerStats.totalQuestions) * 100).toFixed(2)}%
+                            <strong>Score:</strong> {scorePercentage}%
                         </p>
+
+                        <h3>Your Answers:</h3>
+                        {formattedAnswers.length > 0 ? (
+                            <div className="answers-list">{formattedAnswers}</div>
+                        ) : (
+                            <p>No answers available.</p>
+                        )}
+
+                        <h3>Gemini Analysis:</h3>
+                        <div className="gemini-response">
+                            {processGeminiText(geminiAnalysis).map((part, index) => {
+                                if (typeof part === "string") {
+                                    return <p key={index}>{part}</p>;
+                                }
+                                return <span key={index}>{part}</span>;
+                            })}
+                        </div>
                     </div>
                 )}
 
-                <button className="back-button" onClick={() => navigate('/')}>
+                <button className="back-button" onClick={() => navigate("/")}>
                     <FaArrowLeft className="icon" /> Back to Home
                 </button>
             </div>

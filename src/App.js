@@ -15,7 +15,7 @@ function App() {
         {/* Route for Quiz Instructions */}
         <Route path="/start/instructions" element={<Quizinstructions />} />
         <Route path="play/Quiz" element =  {<Play />}/>
-        <Route path="play/quizSummary" element = {<QuizSummary />} />
+        <Route path="Summary" element = {<QuizSummary />} />
         {/* <Route path="/login" component={Login} /> */}
         {/* <Route path="/register" component={Register} /> */}
 

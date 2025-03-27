@@ -91,12 +91,25 @@ export const Play = () => {
                     'Content-Type': 'application/json',
                 },
             });
+            const geminiText = response.data.candidates[0].content.parts[0].text || "No analysis available.";
+            setGeminiResponse(); // Assuming this is the structure
+            // Navigate to QuizSummary with results
+            const answersArray = Array.isArray(answers) ? answers.filter(Boolean) : Object.values(answers || {});
 
-            setGeminiResponse(response.data.candidates[0].content.parts[0].text); // Assuming this is the structure
-            setIsQuizEnded(true); // Show the response
+            navigate("/Summary", {
+                state: {
+                    totalQuestions: questions.length,
+                    answeredQuestions: answersArray.length,  // Count only valid answers
+                    answers: answersArray,
+                    geminiAnalysis: geminiText
+                }
+            });
+
+        
+            // setIsQuizEnded(true); // Show the response
         } catch (error) {
             console.error('Gemini API Error:', error);
-            setGeminiResponse('Error analyzing responses. Please check the console.');
+            setGeminiResponse('Error fetching analysis.');
         } finally {
             setApiLoading(false); // Stop loading
         }
@@ -208,16 +221,6 @@ export const Play = () => {
             <div className="questions">
                 {loading ? (
                     <p>Loading questions...</p>
-                ) : isQuizEnded ? (
-                    <div>
-                        <h3>Quiz Summary</h3>
-                        <p>Total Questions: {questions.length}</p>
-                        <p>Answered Questions: {Object.keys(answers).length}</p>
-                        <p>Your Answers:</p>
-                        <pre>{JSON.stringify(answers, null, 2)}</pre>
-                        <h3>Gemini Analysis:</h3>
-                        <p>{geminiResponse}</p> {/* Display Gemini response */}
-                    </div>
                 ) : questions.length > 0 ? (
                     <>
                         <h2>Quiz Mode</h2>
@@ -248,6 +251,20 @@ export const Play = () => {
         </>
     );
 };
+
+
+
+// : isQuizEnded ? (
+//     <div>
+//         <h3>Quiz Summary</h3>
+//         <p>Total Questions: {questions.length}</p>
+//         <p>Answered Questions: {Object.keys(answers).length}</p>
+//         <p>Your Answers:</p>
+//         <pre>{JSON.stringify(answers, null, 2)}</pre>
+//         <h3>Gemini Analysis:</h3>
+//         <p>{geminiResponse}</p> {/* Display Gemini response */}
+//     </div>
+// )
 
 // import React, { useState, useEffect } from 'react';
 // import { Helmet } from 'react-helmet';
