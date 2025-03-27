@@ -54,28 +54,38 @@ h5 {
     color: $dark-blue;
 }
 
-// Two-Option Buttons (Yes/No)
+// Two-Option Buttons (Yes/No) - Same Style as Next/Previous
 .options-container {
     display: flex;
-    justify-content: center;
-    gap: $md;
+    justify-content: space-between;
+    gap: $sm; /* Reduce gap between buttons */
     margin-bottom: $md;
+
+    .option-item {
+        list-style: none; /* Removes bullet points from li */
+    }
 
     .option {
         background-color: $blue;
         border-radius: $button-radius;
         color: white;
         cursor: pointer;
-        padding: $sm $md;
-        transition: 0.3s linear all;
-        text-align: center;
-        width: 45%;
-        font-weight: bold;
+        padding: $sm $lg; /* Keep padding large for readability */
+        font-size: 1.2rem; /* Larger font size */
         border: 2px solid transparent;
-        font-size: 1rem;
-
+        text-align: center;
+        width: 48%; /* Buttons take up 48% of the container width */
+        height: 50px; /* Fixed height for consistency */
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Centers text vertically */
+        text-transform: uppercase; /* Makes text all caps */
+        font-weight: bold;
+        transition: 0.3s linear all;
+        
         &:hover {
-            background-color: $dark-blue;
+            background-color: $dark-blue; /* Darker color on hover */
+            color: $yellow; /* Change text color on hover */
         }
 
         &.selected-option {
@@ -83,8 +93,39 @@ h5 {
             color: black;
             border: 2px solid $blue;
         }
+
+        &:active {
+            background-color: $dark-green; /* Dark green on active press */
+            color: white;
+        }
     }
 }
+
+// Make sure buttons look good on smaller screens as well
+@media screen and (max-width: 768px) {
+    .options-container {
+        flex-direction: column;
+        align-items: center;
+        gap: $sm; /* Reduce gap when stacked vertically */
+
+        .option {
+            width: 80%; /* Take up more width when stacked */
+            font-size: 1.1rem; /* Adjust font size for mobile */
+            padding: $sm $md;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .options-container {
+        .option {
+            font-size: 1rem;
+            padding: $sm;
+            width: 90%; /* Make buttons almost full width on very small screens */
+        }
+    }
+}
+
 
 /// Likert Scale (5-Option Slider)
 .slider-container {
@@ -350,5 +391,86 @@ select {
             padding: $sm $md;
             width: 45%;
         }
+    }
+}
+
+
+
+// Text Input for Open-Ended Questions
+.text-input-container {
+    display: flex;
+    justify-content: center; /* Center the textarea horizontally */
+    align-items: center; /* Center the textarea vertically */
+    margin: $md auto;
+    text-align: center;
+    width: 100%; /* Ensure container takes up full width on smaller screens */
+    max-width: 800px; /* Increase max-width for wider screens */
+}
+
+textarea {
+    width: 100%; /* Ensure the textarea takes up the full width of the container */
+    max-width: 100%; /* Prevent textarea from going beyond the container width */
+    padding: $sm;
+    font-size: 1rem;
+    border-radius: $button-radius;
+    border: 2px solid $light-gray;
+    resize: none;
+    transition: 0.3s;
+
+    // Focus state for better user experience
+    &:focus {
+        outline: none;
+        border-color: $blue;
+        box-shadow: 0 0 5px rgba($blue, 0.5);
+    }
+}
+
+// 📱 RESPONSIVENESS FOR DIFFERENT SCREEN SIZES
+
+// For smaller screens (Phones & Small Tablets)
+@media screen and (max-width: 768px) {
+    .text-input-container {
+        width: 95%; /* Adjust width for smaller screens */
+    }
+
+    textarea {
+        font-size: 1rem; /* Adjust font size for readability */
+        padding: $sm $md; /* Adjust padding */
+    }
+}
+
+// Extra Small Screens (Very Small Phones)
+@media screen and (max-width: 480px) {
+    .text-input-container {
+        width: 100%; /* Ensure full width */
+    }
+
+    textarea {
+        font-size: 0.9rem; /* Adjust font size for very small screens */
+        padding: $sm; /* Adjust padding */
+    }
+}
+
+// Large Screens (Desktops & Large Tablets)
+@media screen and (min-width: 1024px) {
+    .text-input-container {
+        width: 95%; /* Increase width on large screens to make the textarea larger */
+    }
+
+    textarea {
+        font-size: 1.1rem; /* Slightly larger font size */
+        padding: $sm $lg; /* Adjust padding for large screens */
+    }
+}
+
+// Medium Screens (Tablets)
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .text-input-container {
+        width: 98%; /* Adjust width for tablet devices */
+    }
+
+    textarea {
+        font-size: 1rem; /* Keep font size appropriate for tablets */
+        padding: $sm $md; /* Adjust padding */
     }
 }

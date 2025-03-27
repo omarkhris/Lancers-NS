@@ -17,8 +17,8 @@ export const Home = () => {
           </div>
           <h1>Rural Mind</h1>
           <div className="start-button-container">
-            <ul>
-              <li><Link className= "start-button" to="start/instructions">Start</Link></li>
+            <ul list-style-type="none">
+              <li  ><Link className= "start-button" to="start/instructions">Start</Link></li>
             </ul>
           </div>
           <div className="auth-container">

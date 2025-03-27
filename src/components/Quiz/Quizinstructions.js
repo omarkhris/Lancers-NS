@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import answer from '/Users/jordanjones/Applications/front-end/rural/src/assets/img/question-screenshot.png';
-import fiftyFifty from '/Users/jordanjones/Applications/front-end/rural/src/assets/img/question-screenshot.png';
+import answer from '../../assets/img/question-screenshot.png';
+import fiftyFifty from '../../assets/img/question-screenshot.png';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 

@@ -1,10 +1,10 @@
 [
-    {
-      "question": "Have you read the consent information and agree to participate in the study?",
-      "type": "single-choice",
-      "options": ["Yes", "No"]
-    },
-    {
+  {
+    "question": "Have you read the consent information and agree to participate in the study?",
+     "type": "single-choice",
+     "options":["Yes", "No"]
+  },
+  {
       "question": "Do you currently work in the production agriculture industry? Production agriculture is defined as 'Agricultural production is a series of activities that result in a product that will ultimately be sold at retail' (Minnesota Department of Revenue).",
       "type": "single-choice",
       "options": ["Yes", "No"]
