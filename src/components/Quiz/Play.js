@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Import axios
-
+import { FaSpinner } from 'react-icons/fa';
 export const Play = () => {
     const [questions, setQuestions] = useState([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -105,7 +105,7 @@ export const Play = () => {
                 }
             });
 
-        
+
             // setIsQuizEnded(true); // Show the response
         } catch (error) {
             console.error('Gemini API Error:', error);
@@ -212,11 +212,11 @@ export const Play = () => {
         <>
             <Helmet><title>Quiz Page</title></Helmet>
             {/* SECURITY WARNING - READ THIS CAREFULLY! */}
-            <div style={{ backgroundColor: 'yellow', padding: '10px', border: '1px solid red' }}>
+            {/* <div style={{ backgroundColor: 'yellow', padding: '10px', border: '1px solid red' }}>
                 <h2>SECURITY WARNING:</h2>
                 <p>This application is for LOCAL TESTING ONLY. The Gemini API key is exposed in the source code and should NEVER be used in a production environment. This key can be used by anyone to access the Gemini API and may incur charges.</p>
                 <p>Do not deploy this code to a public server.</p>
-            </div>
+            </div> */}
 
             <div className="questions">
                 {loading ? (
@@ -230,16 +230,16 @@ export const Play = () => {
                         {renderOptions()}
 
                         <div className="button-container">
-                            <button onClick={handlePreviousQuestion} disabled={currentQuestionIndex === 0}>
+                            <button className="previous-button" onClick={handlePreviousQuestion} disabled={currentQuestionIndex === 0}>
                                 Previous
                             </button>
-                            <button onClick={handleNextQuestion} disabled={currentQuestionIndex >= questions.length - 1}>
+                            <button className="next-button" onClick={handleNextQuestion} disabled={currentQuestionIndex >= questions.length - 1}>
                                 Next
                             </button>
-                            <button onClick={handleQuitButtonClick}>Quit</button>
+                            <button className='quit-button' onClick={handleQuitButtonClick}>Quit</button>
                             {currentQuestionIndex === questions.length - 1 && (
-                                <button onClick={endGame} disabled={apiLoading}>
-                                    Submit
+                                <button className="submit-button" onClick={endGame} disabled={apiLoading}>
+                                    {apiLoading ? <FaSpinner className="spinner" /> : 'Submit'}
                                 </button>
                             )}
                         </div>

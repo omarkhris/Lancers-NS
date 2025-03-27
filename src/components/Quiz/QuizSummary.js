@@ -45,9 +45,11 @@ const QuizSummary = (props) => {
     // Parse answers for more user-friendly display
     const formattedAnswers = answers.map((answer, index) => (
         <p key={index}>
-            <strong>Q{index + 1}:</strong> {answer.optionText}
+            <strong>Q{index + 1}:</strong> {answer?.optionText || "No answer selected"}
         </p>
     ));
+    console.log("Quiz answers:", answers);
+
 
     return (
         <div className="quiz-summary-container">
@@ -72,18 +74,9 @@ const QuizSummary = (props) => {
                             <FaCheckCircle className="icon" />
                             <strong>Answered:</strong> {answeredQuestions}
                         </p>
-                        <p className="score">
-                            <strong>Score:</strong> {scorePercentage}%
-                        </p>
+                        
 
-                        <h3>Your Answers:</h3>
-                        {formattedAnswers.length > 0 ? (
-                            <div className="answers-list">{formattedAnswers}</div>
-                        ) : (
-                            <p>No answers available.</p>
-                        )}
-
-                        <h3>Gemini Analysis:</h3>
+                        <h3>LLM Analysis integrated with Gemini :</h3>
                         <div className="gemini-response">
                             {processGeminiText(geminiAnalysis).map((part, index) => {
                                 if (typeof part === "string") {
